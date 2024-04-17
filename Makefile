@@ -1,8 +1,10 @@
-final: main.o
-	gcc main.o -o app.out
+final: ./build/main.o
+	@mkdir ./build/bin
+	gcc ./build/main.o -o ./build/bin/app.out
 
-main.o: ./src/main.c
-	gcc -c ./src/main.c
+./build/main.o: ./src/main.c
+	@mkdir ./build
+	gcc -c ./src/main.c -o ./build/main.o
 
 clean:
-	@rm ./app.out ./*.o
+	@rm -r ./build
